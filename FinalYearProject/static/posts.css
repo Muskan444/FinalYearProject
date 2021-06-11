@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: 'Exo 2', sans-serif;
+    text-transform: capitalize;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+}
+.home {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 0px;
+    letter-spacing: 1.5px;
+    color: black;
+}
+
+.upload {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 200px;
+    letter-spacing: 1.5px;
+    color: black;
+}
+
+.logout {
+    margin: 70px;
+    text-decoration: none;
+    color: black;
+    font-size: 1.5rem;
+}
+
+main {
+    display: flex;
+    margin: 2rem 15rem 2rem 15rem;
+    background-color: aliceblue;
+}
+
+.profile-info {
+    width: 50%;
+    padding: 1.5rem;
+    overflow: auto;
+}
+
+.user-profile-image-box {
+    border-radius: 50%;
+    width: 40%;
+    padding: 0rem;
+    display: flex;
+}
+
+.profile-image {
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+}
+
+.user-info {
+    margin: 0 5rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.updateprofile {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 0px;
+    letter-spacing: 1.5px;
+    color: black;
+}
+
+.updatepost {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    letter-spacing: 1.5px;
+    color: black;
+}
+
+.label-data {
+    display: flex;
+    padding: .5rem .5rem;
+    justify-content: space-between;
+}
+
+.label {
+    font-weight: bold;
+    font-size: large;
+    width: 40%;
+}
+
+.data {
+    font-weight: bold;
+    width: 60%;
+    text-align: left;
+}

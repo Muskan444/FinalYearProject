@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: montserrat, Arial, Helvetica, sans-serif;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    background: #686868;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #EFEFEF;
+    display: flex;
+    padding: 0 4rem;
+    height: 5rem;
+    align-items: center;
+}
+
+.home {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 0px;
+    letter-spacing: 1.5px;
+    color: black;
+}
+
+.upload {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 200px;
+    letter-spacing: 1.5px;
+    color: black;
+}
+
+header a {
+    text-decoration: none;
+    color: black;
+}
+
+pre {
+    padding: 0 4rem;
+    font-size: 4rem;
+    line-height: 1;
+}
+
+pre a {
+   font-weight: bold;
+   color: #dfdfdf;
+   text-decoration: none;
+}
+
+.logout {
+    margin: 70px;
+    text-decoration: none;
+    color: black;
+    font-size: 1.5rem;
+}
+
+main {
+     
+    display: flex;
+    margin: 10rem 15rem 2rem 15rem;
+    background-color: white;
+}
+
+
+
+.profile-info {
+    width: 50%;
+    padding: 3rem;
+    overflow: auto;
+}
+
+.user-profile-image-box {
+    border-radius: 50%;
+    width: 25%;
+    padding: 3rem;
+    display: flex;
+}
+
+.profile-image {
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+}
+
+.user-info {
+    margin: 0 5rem;
+    padding-bottom: 120px;
+}
+
+.updateprofile {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 0px;
+    letter-spacing: 1.5px;
+    color: black;
+}
+
+.updatepost {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    letter-spacing: 1.5px;
+    color: black;
+}
+
+.label-data {
+    display: flex;
+    padding: .5rem .5rem;
+    justify-content: space-between;
+}
+
+.label {
+    font-weight: bold;
+    font-size: large;
+    width: 40%;
+}
+
+.data {
+    width: 60%;
+    text-align: left;
+}
+
+.posts {
+    margin: 0 0rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    grid-gap: 1px;
+}
+
+.post {
+    margin: 0 0rem;
+    display: grid;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    grid-gap: 1rem;
+}
+
+.profileposts {
+    border-radius: 100%;
+    margin: 0 1rem;
+    display: flex;
+    flex-direction: row-reverse;
+}

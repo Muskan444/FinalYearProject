@@ -1,0 +1,316 @@
+﻿{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Post</title>
+
+    <link rel="stylesheet" href="/static/header.css">
+
+
+    <link rel="shortcut icon" href="{% static '/images/favicon.ico' %}" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <style>
+        #user_heading {
+            font-size: 24px;
+            color: white;
+        }
+
+        .home {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 0px;
+            letter-spacing: 1.5px;
+            color: black;
+        }
+
+        .upload {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 200px;
+            letter-spacing: 1.5px;
+            color: black;
+        }
+
+        .profile-box {
+            margin: 0 0 0 auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-image {
+            height: 35px;
+            margin: 15px;
+        }
+
+        .signUp-login {
+            margin: 0 0 0 auto;
+        }
+
+        .media {
+            margin: 0 0 0 4rem;
+        }
+    </style>
+    <style>
+        body {
+            height: 100%;
+            width: 100%;
+            background: black;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .searchbar {
+            padding: 0 4rem;
+            height: 3rem;
+            max-width: 500px;
+        }
+
+        .article-img {
+            border-radius: 50%;
+        }
+
+        .displayposts {
+            background: #E0E0E0;
+            border-radius: 3px;
+            margin-bottom: 20px;
+        }
+    </style>
+    <style>
+        .Review{
+            background-color: black;
+            color: yellow;
+            margin-left: 10rem;
+            font-size: 2rem;
+        }
+        .card-body {
+            background-color: black;
+            color: white;
+        }
+        .card-title {
+            font-family: 'Lucida Sans';
+            font-size: 5rem;
+            text-align: center;
+            color: yellow;
+        }
+        .comment {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .author {
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 2rem;
+            text-align: center;
+        }
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+            display: block
+        }
+        .ingredients {
+            font-size: 3.5rem;
+            color: yellow;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-style: italic;
+        }
+        .post-thumb img {
+            border-radius: 30px;
+            margin-bottom: 30px;
+        }
+        article{
+            padding-top: 8rem;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="fas fa-hamburger"></div>
+
+        <a href="/" class="logo"><img src="/static/images/logo.png" alt=""></a>
+        <nav>
+            <ul>
+                <li><a href="/content/">RECOMMENDATION</a></li>
+                <li><a href="/create_post/">POST RECIPE</a></li>
+                <li>
+                    <div class="searchbar">
+                        <form method="get" class="form-inline my-2 my-lg-0" action="/search">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query">
+                            <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                </li>
+                <li>
+                    {%if user.is_authenticated %}
+                    <div class="profile-box">
+                        <a href="/profile/">
+                            <img class='profile-image' src="/static/images/profile-icon.svg" alt="">
+                        </a>
+                        <h3 class="User-name"><a href="/profile/"> {{user.first_name}}</a></h3>
+                    </div>
+                    {% else %}
+                    <h3 class="signUp-login"><a href="/login_page/"> Login/Sign Up</a></h3>
+                    {% endif %}
+                </li>
+            </ul>
+        </nav>
+
+    </header>
+        <div class="row">
+            <div class="col-sm-8">
+                <article action="" method="get">
+                    {% csrf_token %}
+                    <div class="col-md-15 blogShort">
+                        <div class="card u-clearfix">
+                            <div class="card-body">
+                                <h1 class="card-title">{{ data.title }}</h1>
+                                <h3 class="author"> BY {{data.Author}}</h3>
+                                <h1 style="font-size: 3.5rem; color: yellow;">Rating: {{ average }}</h1>
+                                <div class="post-thumb">
+                                    {% if data.ImageorVideo.url|slice:"-4:" == ".mp4" %}
+                                    <video width="928" height="528" controls class="center">
+                                        <source media="screen" src="{{ data.ImageorVideo.url }}">
+                                    </video>
+                                    {% else %}
+                                    <img width="928" height="528" src="{{ data.ImageorVideo.url }}">
+                                    {% endif %}
+                                </div>
+                                <span class="card-description subtle">
+                                    <div class="col-lg-10 pull-center">
+                                        <h1 class="ingredients">  INGREDIENTS: </h1>
+                                        <h3 style="font-size: 2.5rem; line-height: 200%;" class="card-read"> {{ data.ingredients|linebreaksbr }}</h3>
+                                    </div>
+                                    <br>
+                                    <div class="col-lg-10 pull-center">
+                                        <h3 class="ingredients">RECIPE:  </h3>
+                                        <h3 style="font-size: 2.5rem; line-height: 150%;" class="card-reading">
+                                            {{ data.recipe|linebreaksbr }}
+                                        </h3>
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="card-shadow"></div>
+                    </div>
+                </article>
+            </div>
+            <br>
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="card-body">
+                        <article>
+                            <h1 class="text-center" style="font-size: 4rem;"> Add Review</h1>
+                            <form action="{% url 'addreview' data.id %}" method="POST">
+                                {% csrf_token %}
+                                <h3 class="comment">Review</h3>
+                                <textarea name="comment" id="comment" cols="30" rows="5" class="form-control"></textarea>
+                
+                                <label class="comment" for="rating">Rating</label>
+                                <input type="range" id="rangeInput"
+                                       name="rating" min="0" max="5" value="0" step="0.5"
+                                       oninput="amount.value=rangeInput.value">
+                
+                                <output name="amount" id="amount" for="rangeInput">0</output>
+                
+                                <br>
+                                <input type="submit" class="btn btn-outline-warning my-2 my-sm-0" value="Add Review">
+                            </form>
+                        </article>
+                    </div>
+                </div>
+                <button class='Review' onclick="myFunction()">REVIEW SECTION</button>
+                <div id="myDIV" class="row">
+                    <div class="card-body">
+                        <div class="card-read">
+                            <h1 class="text-center" style="color: #f5eeee; font-size: 4rem;">Reviews</h1>
+                            {% for review in reviews %}
+                            <div class="card-body">
+                                <div class="row">
+                                    <img class="article-img" height="50" width="50" src="{{review.user.profile.image.url }}">
+                                    <div class="col-sm-4">
+                                        <h1 class="data" > {{review.user.username}}  </h1>
+                                        <h7>{{review.pub_date}}</h7>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <h1 class="data" style="color: khaki;">Rating:{{ review.rating }}</h5>
+                                        <h1 class="data">{{ review.comment }}</h1> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="background-color: #EAEFF5">
+                                <br >
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>  
+                </div>
+                <h1>
+                    <!---<a href="/recommendations/"style="color: yellow;"> RECOMMENDATION ON BASIS OF RATING</a>-->
+                </h1>
+            </div>
+            <br>  
+        </div>
+    </div> 
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myDIV");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>   
+</body>
+<footer>
+    <div class = "mt-3" style  = " width:100% ; height:250px">
+        <div class="container">
+            <div class = "row">
+                <div class = "col-md-4 mt-3">
+                    <h1 class="text-warning"> Contact Information </h1>
+                    <p style="color: #fff; font-size: 12px">
+                    <i class="fa fa-map-marker text-warning"></i> Kathmandu, Nepal</p>
+                    <p style="color: #fff; font-size: 12px">
+                    <i class="fa fa-envelope text-warning"></i> Fyp@gmail.com</p>
+                    <p style="color: #fff; font-size: 12px">
+                    <i class="fa fa-mobile text-warning"></i> 9876543210</p>
+                    <p style="color: #fff; font-size: 12px">
+                    <i class="fa fa-instagram text-warning"></i> www.instagram.com/muskansheikhh_4</p>
+                </div>
+    
+                <div class="col-md-4 mt-3">
+                    <h1 class="text-warning">ABOUT US</h1>
+                    <p style="font-size: 16px">
+                        <h3 style="color: #fff;"> Foodie is a blog website for people who loves food</h3>
+                    </p>
+                </div>
+    
+                <div class="col-md-4 mt-3">
+                    <h1 class="text-warning">News Letter</h1>
+                    <p style="color: #fff; font-size: 16px">
+                    If you want any extra information, send me your Email ID. 
+                    </p>
+    
+                    <form method="post" class="form-inline">
+                        {% csrf_token %}
+                            <input type= "email" name="email id" placeholder="Enter your Email ID" 
+                            required class="form-control mr-2">
+                            <input type= "submit" value="send" class="btn btn-outline-warning">
+                    </form>
+                    <h3 style='color: #fff;'> OR <a href="/contact/" style="color: white"> CONTACT US </a></h3>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="m-0 text-white text-center ">Copyright &copy; FOODIE</p>
+</footer>
+</html>

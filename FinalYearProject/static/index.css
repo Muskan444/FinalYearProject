@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: montserrat, Arial, Helvetica, sans-serif;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    background: #E0E0E0;
+    background: linear-gradient(135deg, #E0E0E0 0%,#3f3f3f 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #EFEFEF;
+    display: flex;
+    padding: 0 4rem;
+    height: 5rem;
+    align-items: center;
+}
+
+.home {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 0px;
+    letter-spacing: 1.5px;
+    color: black;
+}
+
+.upload {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 200px;
+    letter-spacing: 1.5px;
+    color: black;
+}
+
+.profile-box {
+    margin: 0 0 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.profile-image {
+    height: 35px;
+    margin: 15px;
+}
+
+
+.signUp-login {
+    margin: 0 0 0 auto;
+}
+
+
+header a {
+    text-decoration: none;
+    color: black;
+}
+
+pre {
+    padding: 0 4rem;
+    font-size: 4rem;
+    line-height: 1;
+}
+
+pre a{
+    font-weight: bold;
+    color: #dfdfdf;
+    text-decoration: none;
+}
+.displayposts {
+    margin: 0 0rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.displaypost {
+    margin: 0 0rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.posts {
+    margin: 0 5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.post {
+    margin: 0 5rem;
+    display: flex;
+    flex-direction: column;
+}
